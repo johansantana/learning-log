@@ -8,7 +8,7 @@ from .forms import TopicForm, EntryForm
 
 def index(request):
     """The home page for Learning Log."""
-    return render(request, 'learning_logs/index.html')
+    return render(request, 'index.html')
 
 
 def check_topic_owner(topic, request):
@@ -21,7 +21,7 @@ def topics(request):
     """Show all topics."""
     topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
-    return render(request, 'learning_logs/topics.html', context)
+    return render(request, 'topics.html', context)
 
 
 @login_required
@@ -33,7 +33,7 @@ def topic(request, topic_id):
 
     entries = topic.entry_set.order_by('date_added')
     context = {'topic': topic, 'entries': entries}
-    return render(request, 'learning_logs/topic.html', context)
+    return render(request, 'topic.html', context)
 
 
 @login_required
@@ -53,7 +53,7 @@ def new_topic(request):
 
     # Display a blank or invalid form
     context = {'form': form}
-    return render(request, 'learning_logs/new_topic.html', context)
+    return render(request, 'new_topic.html', context)
 
 
 @login_required
@@ -76,7 +76,7 @@ def new_entry(request, topic_id):
 
     # Display a blank or invalid form.
     context = {'topic': topic, 'form': form}
-    return render(request, 'learning_logs/new_entry.html', context)
+    return render(request, 'new_entry.html', context)
 
 
 @login_required
@@ -97,4 +97,4 @@ def edit_entry(request, entry_id):
             return redirect('learning_logs:topic', topic_id=topic.id)
 
     context = {'entry': entry, 'topic': topic, 'form': form}
-    return render(request, 'learning_logs/edit_entry.html', context)
+    return render(request, 'edit_entry.html', context)
