@@ -1,9 +1,21 @@
 {% extends 'layouts/base.html' %}
 
+{% block pagetitle %}Register{% endblock pagetitle %}
+
 {% block content %}
-  <form method="post" action="{% url 'users:register' %}">
+  <style>
+    .errorlist {
+      max-width: 400px;
+      padding: 0;
+      margin-bottom: 20px;
+      color: #d26666;
+      text-align: center;
+    }
+  </style>
+
+  <form method="post" action="{% url 'users:register' %}" clas="register_form">
     {% csrf_token %}
-    {{ form }}
+    {{ form.as_div }}
 
     <button name="submit" class="cta-button">Register</button>
     <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />

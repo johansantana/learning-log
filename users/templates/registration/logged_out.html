@@ -1,5 +1,10 @@
 {% extends 'layouts/base.html' %}
 
+{% block pagetitle %}Logged out{% endblock pagetitle %}
+
 {% block content %}
   <p>You have been logged out. Thank you for visiting!</p>
+
+  {% load static %}
+  <img src="{% static 'images/illustration_2.png' %}" alt="Man sitting on a bench">
 {% endblock content %}

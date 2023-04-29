@@ -4,6 +4,8 @@
   --primary-color: #0a0a12;
   --secondary-color: rgb(255, 255, 255);
   --accent-color: #14141f;
+  --secondary-accent-color: rgb(242, 247, 221);
+  --error-color: #d26666;
 }
 
 body {
@@ -53,7 +55,7 @@ input[type='text'],
 input[type='password'],
 textarea {
   color: var(--secondary-color);
-  margin-bottom: 20px;
+  margin: 10px 0;
   background-color: var(--primary-color);
   padding: 0.5em 1em;
   border: 2px var(--secondary-color) solid;
@@ -101,7 +103,28 @@ a:hover {
 .login_form {
   display: flex;
   flex-direction: column;
+  gap: 5px;
   align-items: center;
+}
+
+.register_advice {
+  margin-top: 50px;
+}
+
+.register_advice a {
+  color: var(--secondary-accent-color);
+}
+
+.form-control {
+  display: block;
+}
+
+.helptext,
+.helptext ul {
+  font-weight: 300;
+  font-style: italic;
+  color: gray;
+  padding: 0;
 }
 
 .entry p {
@@ -149,7 +172,7 @@ a:hover {
   padding: 0;
   display: flex;
   justify-content: space-evenly;
-  gap: 2em;
+  gap: 1em;
 }
 
 .navbar span {
@@ -165,6 +188,7 @@ a:hover {
 
   .navbar ul {
     justify-content: flex-end;
+    gap: 2em;
   }
 
   .navbar span {

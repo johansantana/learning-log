@@ -1,9 +1,18 @@
 {% extends 'layouts/base.html' %}
 
+{% block pagetitle %}Login{% endblock pagetitle %}
+
 {% block content %}
-  {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-  {% endif %}
+
+  <style>
+    .errorlist {
+      max-width: 400px;
+      padding: 0;
+      margin-bottom: 20px;
+      color: #d26666;
+      text-align: center;
+    }
+  </style>
 
   <form action="{% url 'users:login' %}" method="post" class="login_form">
     {% csrf_token %}
@@ -11,4 +20,6 @@
     <button name="submit" class="cta-button">Log in</button>
     <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
   </form>
+
+  <p class="register_advice">Dont have an account yet? <a href="{% url 'users:register' %}">Register</a></p>
 {% endblock content %}

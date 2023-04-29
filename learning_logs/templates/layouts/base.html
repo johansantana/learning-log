@@ -21,7 +21,6 @@
         <a href="{% url 'users:logout' %}" class="cta-button">Logout</a>
       </li>
       {% else %}
-        <li><a href="{% url 'users:register' %}" class="cta-button">Register</a></li> 
         <li><a href="{% url 'users:login' %}" class="cta-button">Login</a></li>
       {% endif %}
     </ul>
