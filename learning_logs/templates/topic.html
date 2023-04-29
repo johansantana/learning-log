@@ -1,20 +1,32 @@
 {% extends 'layouts/base.html' %}
 
-{% block content %}
-  <p>Topic: {{ topic }}</p>
+{% block pagetitle %}{{ topic }}{% endblock pagetitle %}
 
-  <p>Entries:</p>
+{% block content %}
+  <h1>Topic: {{ topic }}</h1>
   <p>
-    <a href="{% url 'learning_logs:new_entry' topic.id %}">Add new entry</a>
+    <a href="{% url 'learning_logs:new_entry' topic.id %}" class="cta-button">
+      <span>New entry</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+        <path d="M12 5l0 14"></path>
+        <path d="M5 12l14 0"></path>
+      </svg>
+    </a>
   </p>
-  <ul>
+  <ul class="entry_list">
     {% for entry in entries %}
-    <li>
-      <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
-      <p>{{ entry.text|linebreaks }}</p>
-      <p>
-        <a href="{% url 'learning_logs:edit_entry' entry.id %}">Edit entry</a>
-      </p>
+    <li class="entry">
+      <span class="entry_date">{{ entry.date_added|date:'M d, Y H:i' }}</span>
+      <p>{{ entry.text }}</p>
+      <a href="{% url 'learning_logs:edit_entry' entry.id %}" class="cta-button">
+        <span>Edit entry</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M4 20h4l10.5 -10.5a1.5 1.5 0 0 0 -4 -4l-10.5 10.5v4"></path>
+          <path d="M13.5 6.5l4 4"></path>
+        </svg>
+      </a>
     </li>
     {% empty %}
       <li>There are no entries for this topic yet.</li>

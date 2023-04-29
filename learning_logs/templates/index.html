@@ -1,8 +1,25 @@
 {% extends 'layouts/base.html' %}
 
+{% block pagetitle %}Home{% endblock pagetitle %}
+
 {% block content %}
+  <h1>Learning Log</h1>
   <p>
     Learning Log helps you keep track of your learning, for any topic you're
     learning about.
   </p>
+
+  {% load static %}
+  <img src="{% static 'images/illustration_1.png' %}" alt="Illustration of a man walking with his phone" width="400">
+
+  <a href="{% url 'learning_logs:topics' %}" class="cta-button">
+    <span>Get started</span>
+    {% load static %}
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <path d="M5 12l14 0" />
+      <path d="M15 16l4 -4" />
+      <path d="M15 8l4 4" />
+    </svg>
+  </a>
 {% endblock content %}

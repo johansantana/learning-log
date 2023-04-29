@@ -1,14 +1,16 @@
 {% extends 'layouts/base.html' %}
 
+{% block pagetitle %}New Entry{% endblock pagetitle %}
+
 {% block content %}
   <p>
     <a href="{% url 'learning_logs:topic' topic.id %}">{{ topic }}</a>
   </p>
 
-  <p>Add a new entry:</p>
+  <h2>Add a new entry:</h2>
   <form action="{% url 'learning_logs:new_entry' topic.id %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button name="submit">Add entry</button>
+    <button name="submit" class="cta-button">Add entry</button>
   </form>
 {% endblock content %}

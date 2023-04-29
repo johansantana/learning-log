@@ -5,10 +5,10 @@
     <p>Your username and password didn't match. Please try again.</p>
   {% endif %}
 
-  <form action="{% url 'users:login' %}" method="post">
+  <form action="{% url 'users:login' %}" method="post" class="login_form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Log in</button>
+    {{ form }}
+    <button name="submit" class="cta-button">Log in</button>
     <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
   </form>
 {% endblock content %}
