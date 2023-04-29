@@ -1,13 +1,35 @@
-<p>
-  <a href="{% url 'learning_logs:index' %}">Learning Log</a> -
-  <a href="{% url 'learning_logs:topics' %}">Topics</a> - 
-  {% if user.is_authenticated %} 
-    Hello, {{ user.username }} 
-    <a href="{% url 'users:logout' %}">Log out</a>
-  {% else %}
-    <a href="{% url 'users:register' %}">Register</a> - 
-    <a href="{% url 'users:login' %}">Log in</a>
-  {% endif %}
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning Log - {% block pagetitle %}{% endblock pagetitle %}</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="{% url 'learning_logs:index' %}">Learning Log</a></li>
+      
+      <li><a href="{% url 'learning_logs:topics' %}">Topics</a></li>
+      {% if user.is_authenticated %} 
+      <li>
+        <span class="greeting">Hello, {{ user.username }} </span>
+        <a href="{% url 'users:logout' %}" class="cta-button">Log out</a>
+      </li>
+      {% else %}
+        <li><a href="{% url 'users:register' %}" class="cta-button">Register</a></li> 
+        <li><a href="{% url 'users:login' %}" class="cta-button">Log in</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+  <main>
+    {% block content %}{% endblock content %}  
+  </main>
+</body>
+</html>
 
-{% block content %}{% endblock content %}
