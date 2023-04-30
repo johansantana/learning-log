@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
 from .forms import RegisterUserForm
 
 
@@ -24,5 +23,11 @@ def register(request):
 
 
 def logout(request):
-    print('loggedout')
     return render(request, 'registration/logged_out.html')
+
+
+def csrf_failure(request, reason=""):
+    """Error in CSRF"""
+    return render(request, 'registration/csrf_token.html', {
+        'reason': reason
+    })
