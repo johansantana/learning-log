@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+import json
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,7 @@ SECRET_KEY = 'django-insecure-(2t52w2d3-%+7bzlwc7f9w_i=3_*!y=#rfv8rze17o+hz)=3wd
 DEBUG = not 'DEBUG' in os.environ
 
 if not DEBUG:
-    DEBUG = os.environ.get('DEBUG')
+    DEBUG = json.loads(os.environ.get('DEBUG'))
 
 ALLOWED_HOSTS = ['*']
 
