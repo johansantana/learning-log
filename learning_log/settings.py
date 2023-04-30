@@ -145,3 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'users:login'
 
 CSRF_FAILURE_VIEW = 'users.views.csrf_failure'
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.up.railway.app/'
+]
