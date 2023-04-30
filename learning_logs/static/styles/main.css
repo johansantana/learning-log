@@ -199,4 +199,10 @@ a:hover {
   .navbar span {
     display: inline;
   }
+
+  input[type='text'],
+  input[type='password'],
+  textarea {
+    max-width: 100%;
+  }
 }
