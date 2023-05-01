@@ -98,3 +98,7 @@ def edit_entry(request, entry_id):
 
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'edit_entry.html', context)
+
+
+def error_404(request, exception):
+    return render(request, '404.html')
